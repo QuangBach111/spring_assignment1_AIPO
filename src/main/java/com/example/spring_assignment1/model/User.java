@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.validator.constraints.Currency;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -30,6 +31,8 @@ public class User {
     private String lastName;
     @Column(name = "email", length = 50, nullable = false, unique = true)
     private String email;
+    @Column(name = "phone", length = 10, nullable = false, unique = true)
+    private String phone;
     @UpdateTimestamp
     private LocalDate modified;
     @CreationTimestamp
@@ -44,7 +47,13 @@ public class User {
     private Long createUserId;
     @Column(name = "update_user_id")
     private Long updateUserId;
+    @Column(name = "is_admin")
+    private Boolean isAdmin;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "position_id")
     private Position position;
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "company_id")
+    private Company company;
+
 }
