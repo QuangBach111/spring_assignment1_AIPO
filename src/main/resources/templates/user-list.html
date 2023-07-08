@@ -3,9 +3,112 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>User List Management</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/"/>
+  <script type="text/javascript" th:src="@{/js/jquery.js}"></script>
 </head>
 <body>
-$END$
+<div class="container-fluid">
+  <nav class="navbar navbar-light bg-light justify-content-between">
+    <a href="#" class="navbar-brand">Employee Management System</a>
+    <form class="form-inline">
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+           aria-expanded="false" th:utext="${turbine_user.loginName}">
+          <i class="fa-solid fa-user"></i>
+        </a>
+      </div>
+    </form>
+  </nav>
+  <div class="row">
+    <div class="col-md-3">
+      <article>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Basic information </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Import </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> User management </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Department management </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Position management </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Equipment management </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Application management </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Workflow management </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Time card management </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Access rights management </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Basic information </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Event Log Management </a>
+      </article>
+    </div>
+    <div class="col-md-9">
+      <aside>
+        <h3>Edit Profile</h3>
+        <div class="dropdown-divider"></div>
+        <div class="card mt-2 mt-3">
+          <div class="card-header">Profile Form Elements</div>
+          <div class="card-body">
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <label class="col-lg-3 control-label">First name</label>
+                <div class="col-lg-11">
+                  <input class="form-control" type="text" id="editFirstName" name="editFisrtName"
+                         size="50" minlength="3" maxlength="30" required
+                         placeholder="Enter your first name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Last name</label>
+                <div class="col-lg-11">
+                  <input class="form-control" type="text" id="editLastName" name="editLastName"
+                         size="50" minlength="3" maxlength="30" required
+                         placeholder="Enter your last name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Email</label>
+                <div class="col-lg-11">
+                  <input class="form-control" type="text" id="editEmail" name="editEmail"
+                         size="50" value="" placeholder="" disabled>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-3 control-label">Phone</label>
+                <div class="col-md-11">
+                  <input class="form-control" type="tel" id="editPhoneNumber"
+                         name="editPhoneNumber" minlength="9" maxlength="13" required
+                         placeholder="Enter your phone number">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label">Desciption</label>
+                <textarea class="form-control col-md-11" id="editDesciption" name="editDesciption"
+                          rows="10"></textarea>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label"></label>
+                <div class="col-md-11">
+                  <button type="submit" class="btn btn-success">Submit Button</button>
+                  <span></span>
+                  <button type="reset" class="btn btn-success">Reset Button</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
