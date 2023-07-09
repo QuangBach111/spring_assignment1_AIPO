@@ -1,115 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main}>
 <head>
   <meta charset="UTF-8">
+
   <title>User List Management</title>
   <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
 
   <script type="text/javascript" th:src="@{/js/jquery.js}"></script>
 </head>
 <body>
-<div class="container-fluid">
-  <nav class="navbar navbar-light bg-light justify-content-between">
-    <a href="#" class="navbar-brand">Employee Management System</a>
-    <form class="form-inline">
-      <div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-           aria-expanded="false" th:utext="${turbine_user.loginName}">
-          <i class="fa-solid fa-user"></i>
-        </a>
-      </div>
-    </form>
-  </nav>
-  <div class="row">
-    <div class="col-md-3">
-      <article>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item text-primary" href="#"> Basic information </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item text-primary" href="#"> Import </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item text-primary" href="#"> User management </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item text-primary" href="#"> Department management </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item text-primary" href="#"> Position management </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item text-primary" href="#"> Equipment management </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item text-primary" href="#"> Application management </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item text-primary" href="#"> Workflow management </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item text-primary" href="#"> Time card management </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item text-primary" href="#"> Access rights management </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item text-primary" href="#"> Basic information </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item text-primary" href="#"> Event Log Management </a>
-      </article>
+  <div class="container-fluid">
+    <div id="content" layout:fragment="content">
     </div>
     <div class="col-md-9">
-      <aside>
-        <h3>Edit Profile</h3>
-        <div class="dropdown-divider"></div>
-        <div class="card mt-2 mt-3">
-          <div class="card-header">Profile Form Elements</div>
-          <div class="card-body">
-            <form class="form-horizontal" role="form">
-              <div class="form-group">
-                <label class="col-lg-3 control-label">First name</label>
-                <div class="col-lg-11">
-                  <input class="form-control" type="text" id="editFirstName" name="editFisrtName"
-                         size="50" minlength="3" maxlength="30" required
-                         placeholder="Enter your first name">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-lg-3 control-label">Last name</label>
-                <div class="col-lg-11">
-                  <input class="form-control" type="text" id="editLastName" name="editLastName"
-                         size="50" minlength="3" maxlength="30" required
-                         placeholder="Enter your last name">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-lg-3 control-label">Email</label>
-                <div class="col-lg-11">
-                  <input class="form-control" type="text" id="editEmail" name="editEmail"
-                         size="50" value="" placeholder="" disabled>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="col-md-3 control-label">Phone</label>
-                <div class="col-md-11">
-                  <input class="form-control" type="tel" id="editPhoneNumber"
-                         name="editPhoneNumber" minlength="9" maxlength="13" required
-                         placeholder="Enter your phone number">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-md-3 control-label">Desciption</label>
-                <textarea class="form-control col-md-11" id="editDesciption" name="editDesciption"
-                          rows="10"></textarea>
-              </div>
-              <div class="form-group">
-                <label class="col-md-3 control-label"></label>
-                <div class="col-md-11">
-                  <button type="submit" class="btn btn-success">Submit Button</button>
-                  <span></span>
-                  <button type="reset" class="btn btn-success">Reset Button</button>
-                </div>
-              </div>
-            </form>
-          </div>
+      <table>
+        <thead>
+        <div class="row"><a href="">User management</a></div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addUserModal">
+          To add a user
+        </button>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2 dropdown-menu" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-light">Remove</button>
+          <button type="button" class="btn btn-light">to enable</button>
+          <button type="button" class="btn btn-light">to disable</button>
+          <button type="button" class="btn btn-light">to change the order of the user</button>
         </div>
-      </aside>
+        </thead>
+        <tbody>
+        <tr>
+          <th class="text-center"><input type="checkbox"></th>
+          <th class="text-center">State</th>
+          <th class="text-center">username</th>
+          <th class="text-center">name</th>
+          <th class="text-center">Department name</th>
+          <th class="text-center">Title</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="e: ${listEmployee}">
+          <td class="text-center"><input type="checkbox"></td>
+          <td class="text-center" th:utext=""></td>
+          <td class="text-center" th:utext="${e.loginName}"></td>
+          <td class="text-center" th:utext="${e.firstName  + e.lastName}"></td>
+          <td class="text-center" th:utext="${e.departmentName}"></td>
+          <td class="text-center" th:utext=""></td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-</div>
-
 </body>
 </html>

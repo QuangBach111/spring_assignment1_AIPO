@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <title>User List Management</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}"/>
+  <script type="text/javascript" th:src="@{/js/jquery.js}"></script>
+</head>
+<body>
+<div layout:fragment="content" class="container-fluid">
+  <nav class="navbar navbar-light bg-light justify-content-between">
+    <a href="#" class="navbar-brand">Employee Management System</a>
+    <form class="form-inline">
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+           aria-expanded="false" th:utext="${turbine_user.loginName}">
+          <i class="fa-solid fa-user"></i>
+        </a>
+      </div>
+    </form>
+  </nav>
+  <div class="row">
+    <div class="col-md-3">
+      <article>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Basic information </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Import </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> User management </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Department management </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Position management </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Equipment management </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Application management </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Workflow management </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Time card management </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Access rights management </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Basic information </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-primary" href="#"> Event Log Management </a>
+      </article>
+    </div>
+  </div>
+</div>
+</body>
+</html>
