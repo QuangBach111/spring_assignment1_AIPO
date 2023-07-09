@@ -1,6 +1,10 @@
 package com.example.spring_assignment1.controller;
 
+import com.example.spring_assignment1.model.Company;
+import com.example.spring_assignment1.model.Position;
 import com.example.spring_assignment1.model.User;
+import com.example.spring_assignment1.service.CompanyService;
+import com.example.spring_assignment1.service.PositionService;
 import com.example.spring_assignment1.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +20,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private PositionService positionService;
+
+    @Autowired
+    private CompanyService companyService;
+
     @GetMapping("/")
     public String listUser(Model model) {
         model.addAttribute("users", this.userService.getAllUser());
@@ -25,6 +35,8 @@ public class UserController {
     @GetMapping("/add")
     public String createAddUserForm(Model model) {
         model.addAttribute("user", new User());
+        model.addAttribute("positions", this.positionService.getAllPosition());
+        model.addAttribute("companies", this.companyService.getAllCompany());
         return "user-add";
     }
 

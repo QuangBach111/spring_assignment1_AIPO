@@ -12,34 +12,30 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
+
+
     @Override
     public List<User> getAllUser() {
-        return userRepository.findAll();
+        return this.userRepository.findAll();
     }
 
     @Override
     public User getUserById(Long id) {
-        return userRepository.findById(id).orElse(null);
+        return this.userRepository.findById(id).orElse(null);
     }
 
     @Override
     public void createUser(User user) {
-        return userRepository.save(user);
+        this.userRepository.save(user);
     }
 
     @Override
-    public void updateUser(Long id, User updatedUser) {
-        User user = userRepository.findById(id).orElse(null);
-        if (user != null) {
-            user.setName(updatedUser.getName());
-            user.setEmail(updatedUser.getEmail());
-            userRepository.save(user);
-        }
-        return user;
+    public void updateUser(User user) {
+        this.userRepository.save(user);
     }
 
     @Override
     public void deleteUser(Long id) {
-        userRepository.deleteById(id);
+        this.deleteUser(id);
     }
 }
