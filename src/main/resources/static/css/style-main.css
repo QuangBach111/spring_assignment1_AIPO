@@ -4,6 +4,7 @@
     height: 100vh;
     border-right: #dee2e6 solid 1px;
     padding: 0px;
+    height: 100vh;
 
 }
 .dashboard ul {
@@ -19,4 +20,9 @@ ul li {
 }
 .btn-employee-menu {
     color: #007bff;
+}
+
+.content{
+    width: 90%;
+    margin: 0 auto;
 }

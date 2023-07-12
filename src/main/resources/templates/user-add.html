@@ -6,71 +6,102 @@
 <head>
 	<meta charset="UTF-8">
 	<title>User Add</title>
+	<!--	Bootstrap css-->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
 </head>
-<body layout:fragment="content">
-<div style="width: 50%" class="mx-auto">
+<body>
+<div layout:fragment="content">
+	<div class="w-100">
 
+		<form th:action="@{/user/add}"
+		      th:object="${user}"
+		      method="post"
+		      id="form">
+
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">login name</label>
+				<div class="col-sm-10">
+					<input th:field="*{loginName}" type="text" class="form-control">
+					<p class="text-danger" th:errors="*{loginName}" th:if="${#fields.hasErrors()}"></p>
+
+				</div>
+
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">password</label>
+				<div class="col-sm-10">
+					<input th:field="*{passwordValue}" type="password" class="form-control">
+					<p class="text-danger" th:errors="*{passwordValue}" th:if="${#fields.hasErrors()}"></p>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">confirm password</label>
+				<div class="col-sm-10">
+					<input th:field="*{confirmPasswordValue}" type="password" class="form-control">
+					<p class="text-danger" th:errors="*{passwordValue}" th:if="${#fields.hasErrors()}"></p>
+
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Name</label>
+				<div class="col-sm-10 form-row">
+					<div class="col">
+						<input th:field="*{firstName}" type="text" class="form-control" placeholder="first name">
+						<p class="text-danger" th:errors="*{firstName}" th:if="${#fields.hasErrors()}"></p>
+					</div>
+					<div class="col">
+						<input th:field="*{lastName}" type="text" class="form-control" placeholder="last name">
+						<p class="text-danger" th:errors="*{lastName}" th:if="${#fields.hasErrors()}"></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Email</label>
+				<div class="col-sm-10">
+					<input th:field="*{email}" type="email" class="form-control">
+					<p class="text-danger" th:errors="*{email}" th:if="${#fields.hasErrors()}"></p>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Telephone number</label>
+				<div class="col-sm-10">
+					<input th:field="*{phone}" type="text" class="form-control">
+					<p class="text-danger" th:errors="*{phone}" th:if="${#fields.hasErrors()}"></p>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Position</label>
+				<div class="col-sm-10" th:object="${department}">
+					<select th:field="*{departmentId}" name="department" class="form-control">
+						<th:block th:each="d :${departments}">
+							<option th:value="${d.departmentId}" th:text="${d.name}"></span></option>
+						</th:block>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Position</label>
+				<div class="col-sm-10" th:object="${position}">
+					<select th:field="*{positionId}" name="position" class="form-control">
+						<th:block th:each="p :${positions}">
+							<option th:value="${p.positionId}" th:text="${p.name}"></span></option>
+						</th:block>
+					</select>
+				</div>
+			</div>
+
+			<button class="btn btn-success" type="submit">Add</button>
+			<a th:href="@{/user/list/1}" class="btn btn-danger">Close</a>
+		</form>
+
+	</div>
 </div>
-<form th:action="@{/user/add}"
-      th:object="${user}"
-      method="post">
 
-	<div class="form-group row">
-		<label class="col-sm-2 col-form-label">login name</label>
-		<div class="col-sm-10">
-			<input th:field="*{id}" type="text" class="form-control-plaintext">
-		</div>
-	</div>
-
-	<div class="form-group row">
-		<label class="col-sm-2 col-form-label">password</label>
-		<div class="col-sm-10">
-			<input th:field="*{passwordValue}" type="password" class="form-control-plaintext">
-		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-sm-2 col-form-label">confirm password</label>
-		<div class="col-sm-10">
-			<input type="password" class="form-control-plaintext">
-		</div>
-	</div>
-
-	<div class="form-group row">
-		<label class="col-sm-2 col-form-label">Name</label>
-		<div class="col-sm-10">
-			<input th:field="*{firstName}" type="text" class="form-control-plaintext" placeholder="first name">
-			<input th:field="*{lastName}" type="text" class="form-control-plaintext" placeholder="last name">
-		</div>
-	</div>
-
-	<div class="form-group row">
-		<label class="col-sm-2 col-form-label">Email</label>
-		<div class="col-sm-10">
-			<input th:field="*{email}" type="text" class="form-control-plaintext">
-		</div>
-	</div>
-
-	<div class="form-group row">
-		<label class="col-sm-2 col-form-label">Telephone number</label>
-		<div class="col-sm-10">
-			<input th:field="*{phone}" type="text" class="form-control-plaintext">
-		</div>
-	</div>
-
-	<div class="form-group row">
-		<label class="col-sm-2 col-form-label">Position</label>
-		<div class="col-sm-10">
-			<select class="form-select" aria-label="Default select example">
-				<option selected>Position</option>
-				<th:block th:each="position :${positions}">
-					<option th:value="${position.id}" th:text="${position.name}"></span></option>
-				</th:block>
-
-			</select>
-		</div>
-	</div>
-
-
-</form>
 </body>
 </html>

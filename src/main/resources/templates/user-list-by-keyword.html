@@ -31,8 +31,6 @@
 		      th:action="@{/user/feature-type/}"
 		      id="form">
 
-			<input hidden="hidden" name="pageNo" id="type" th:value="${pageNo}">
-
 			<table class="table">
 				<thead>
 				<tr class="table-secondary">
@@ -56,32 +54,6 @@
 				</tr>
 				</tbody>
 			</table>
-
-			<!--			page number-->
-			<div th:if="${totalPages>1}">
-				<div class="row justify-content-end">
-
-					<div class="col-sm-2">
-						Total Rows: [[${items}]]
-					</div>
-
-					<!--					Sequence number-->
-					<div class="col-sm-1">
-						<span th:each="pageNumber :${#numbers.sequence(1, totalPages)}">
-							<a th:if="${currentPage != pageNumber}" th:href="@{'/user/list/'+ ${pageNumber}}">[[${pageNumber}]]</a>
-							<span th:unless="${currentPage != pageNumber}">[[${pageNumber}]]</span> &nbsp; &nbsp;
-						</span>
-					</div>
-					<div class="col-sm-1">
-						<a th:if="${currentPage > 1}" th:href="@{'/user/list/' + ${currentPage - 1}}">Previous</a>
-						<span th:unless="${currentPage > 1}">Previous</span>
-					</div>
-					<div class="col-sm-1">
-						<a th:if="${currentPage < totalPages}" th:href="@{'/user/list/' +${currentPage + 1}}">Next</a>
-						<span th:unless="${currentPage < totalPages}">Next</span>
-					</div>
-				</div>
-			</div>
 
 			<!--			Button submit-->
 			<button class="btn btn-danger" id="btn-delete" type="submit" name="type" value="delete">Delete</button>

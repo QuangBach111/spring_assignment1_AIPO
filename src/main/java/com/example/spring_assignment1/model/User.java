@@ -6,10 +6,11 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.hibernate.validator.constraints.Currency;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,42 +19,56 @@ import java.time.LocalDate;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "user_id")
+    private Long userId;
 
+    @NotBlank(message = "This field is required!")
     @Column(name = "login_name", length = 50, nullable = false, unique = true)
     private String loginName;
 
-    @Column(name = "password_value", length = 50, nullable = false, unique = true)
+    @NotBlank(message = "This field is required!")
+    @Column(name = "password_value", length = 50, nullable = false)
     private String passwordValue;
-    @Column(name = "first_name", length = 50, nullable = false, unique = true)
+
+    @NotBlank(message = "This field is required!")
+    @Column(name = "confirm_password_value", length = 50, nullable = false)
+    private String confirmPasswordValue;
+
+    @NotBlank(message = "This field is required!")
+    @Column(name = "first_name", length = 50, nullable = false)
     private String firstName;
-    @Column(name = "last_name", length = 50, nullable = false, unique = true)
+
+    @NotBlank(message = "This field is required!")
+    @Column(name = "last_name", length = 50, nullable = false)
     private String lastName;
+
+    @NotBlank(message = "This field is required!")
     @Column(name = "email", length = 50, nullable = false, unique = true)
     private String email;
+
+    @NotBlank(message = "This field is required!")
     @Column(name = "phone", length = 10, nullable = false, unique = true)
     private String phone;
+
+    @CreationTimestamp
+    @Column(name = "created_date")
+    private LocalDate createdDate;
+
     @UpdateTimestamp
-    private LocalDate modified;
-    @CreationTimestamp
-    private LocalDate created;
+    @Column(name = "updated_date")
+    private LocalDate updatedDate;
+
     @Column(name = "last_login")
-    @CreationTimestamp
+    @UpdateTimestamp
     private LocalDate lastLogin;
-    private Boolean disable;
-    @Column(name = "photo_url")
-    private String photoUrl;
-    @Column(name = "create_user_id")
-    private Long createUserId;
-    @Column(name = "update_user_id")
-    private Long updateUserId;
-    @Column(name = "is_admin")
-    private Boolean isAdmin;
+
+    private boolean disable;
+
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "position_id")
     private Position position;
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "company_id")
-    private Company company;
 
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "department_id")
+    private Department department;
 }
