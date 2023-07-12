@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+
+	<!--	Bootstrap css-->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+
+	<!--	Css-->
+	<link rel="stylesheet" th:href="@{/css/style-main.css}">
+
+</head>
+<body>
+<div class="container-fluid">
+	<!--	Navbar-->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">Navbar</a>
+	</nav>
+
+	<!--	body content-->
+	<div class="row">
+		<!--		Dashboard-->
+		<div class="col-md-2 px-0 py-2 dashboard">
+			<ul class="list-group">
+				<li class="list-group-item"><a th:href="@{/user/list/1}">User management</a></li>
+<!--				<li class="list-group-item"><a href="#" aria-current="true">Department-->
+<!--					management</a></li>-->
+<!--				<li class="list-group-item"><a href="#">Position management</a></li>-->
+			</ul>
+		</div>
+
+		<!--		Content-->
+		<div class="col-md-10 py-2">
+			<p class="text-center text-success" th:text="${messageSuccess}"></p>
+			<p class="text-center text-danger" th:text="${messageError}"></p>
+
+			<!--			content-->
+			<div class="content" layout:fragment="content">
+
+			</div>
+		</div>
+	</div>
+</div>
+<!--  jquery-->
+<script th:src="@{/js/jquery.js}"></script>
+<!--  bootstrap js-->
+<script th:src="@{/js/bootstrap/bootstrap.min.js}"></script>
+
+</body>
+</html>
